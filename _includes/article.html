@@ -20,7 +20,13 @@
 
   <div class="article__meta">
     <div class="article-info">
-      <a href="{{site.baseurl}}/about/" class="article__author-link">{{site.data.settings.author.author__name}}</a> –
+      {% assign author = site.authors | where: 'name', post.author | first %}
+      {% if author %}
+        <a href="{{ site.baseurl }}/authors/{{ author.name }}" class="article__author-link">{{ author.name }}</a>
+      {% else %}
+        <a href="{{site.baseurl}}/about/" class="article__author-link">{{site.data.settings.author.author__name}}</a>
+      {% endif %}
+      –
       <time class="article__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>
     </div>
   </div>
