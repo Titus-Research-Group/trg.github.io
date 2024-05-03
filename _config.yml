@@ -35,6 +35,8 @@ collections:
   research:
     output: true
     permalink: /research/:slug
+  authors:
+    output: true
 
 # Pages Path
 defaults:

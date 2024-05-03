@@ -20,8 +20,13 @@ layout: default
           <h1 class="post-title">{{ page.title | escape }}</h1>
   
           <div class="post-meta">
-            <a href="{{site.baseurl}}/about/" class="post-author-link">{{site.data.settings.author.author__name}}</a> –
-            <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
+            {% assign author = site.authors | where: 'name', page.author | first %}
+            {% if author %}
+              <a href="{{ site.baseurl }}/authors/{{ author.name }}" class="post-author-link">{{ author.name }}</a>
+            {% else %}
+              <a href="{{site.baseurl}}/about/" class="post-author-link">{{site.data.settings.author.author__name}}</a>
+            {% endif %}
+            – <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
           </div>
 
         </div>
