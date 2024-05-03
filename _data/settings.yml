@@ -49,7 +49,7 @@ social:
 hero:
   hero__title: We're the Titus Research Group @ USC.
   hero__description: We're computer scientists, engineers, biologists, and policy wonks. We believe that science & technology need to be paired with a healthy appreciation for policy & security.<br><br>We specialize in building computational tools to explore the world and building methods to do so responsibly.
-  hero__image: '/images//logos/ivg-logo-black.jpg'
+  hero__image: '/images/titus/backcountry.jpg'
 
 
 #-------------------------------
