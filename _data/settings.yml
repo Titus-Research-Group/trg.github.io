@@ -1,0 +1,159 @@
+#-------------------------------
+# Site Settings
+title: Titus Research Group
+logo: # '/images/titus/backcountry.jpg' # You can add own logo. For example '/images/logo.png'.
+description: The Titus Research Group @ USC specializes in research and development at the intersection of artificial intelligence, biotechnology, and security.
+color_scheme: auto # You can choose three modes auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themself.
+
+
+#-------------------------------
+# Navigation Settings
+menu__settings:
+  menu__items:
+    - title: 'Home'
+      url: '/'
+    - title: 'Team'
+      url: '/team/' 
+    - title: 'Projects'
+      url: '/projects/'
+    - title: 'Publications'
+      url: 'https://scholar.google.com/citations?user=e4hx110AAAAJ&hl=en'
+      new_tab: true
+    - title: 'Blog'
+      url: '/blog/'
+    - title: 'Work with us'
+      url: '/contact/' 
+    # - title: 'About'
+    #  url: '/about/'
+
+
+#-------------------------------
+# Author Settings
+author:
+  author__name: Alexander Titus
+  author__bio: Titus is the Principal Investigator of the Titus Research Group. TRG specializes in the research and development of emerging technologies at the intersection of artificial intelligence, biotechnology, and security.
+  author__avatar: '/images/titus/titus.jpg'
+
+social:
+- {icon: "ion-logo-linkedin", link: "https://www.linkedin.com/in/alexandertitus/"}
+- {icon: "ion-logo-github", link: "https://github.com/Titus-Research-Group"}
+# - {icon: "ion-logo-instagram", link: "https://www.instagram.com"}
+# - {icon: "ion-logo-twitter", link: "https://twitter.com"}
+# - {icon: "ion-logo-facebook", link: "https://www.facebook.com"}
+
+# Example of adding a new link to the footer - {icon: "ion-logo-dribbble", link: "https://dribbble.com"}
+# Other icons can be found at https://ionicons.com/v4/
+
+#-------------------------------
+# Hero Settings
+hero:
+  hero__title: We're the Titus Research Group @ USC.
+  hero__description: We're computer scientists, engineers, biologists, and policy wonks. We believe that science & technology need to be paired with a healthy appreciation for policy & security.<br><br>We specialize in building computational tools to explore the world and building methods to do so responsibly.
+  hero__image: '/images//logos/ivg-logo-black.jpg'
+
+
+#-------------------------------
+# Newsletter
+mailchimp:  #enable To enable the mailchimp form, use the value 'enable'. To disable the form, leave the field blank.
+mailchimp__identifier: # Add your MailChimp form identifier. For example - frnla.us6.list-manage.com/subscribe/post?u=6314d69a3f315af7ce3fb00a0&amp;id=3038727cc3
+mailchimp__input__text: Your email address...
+mailchimp__button__text: Get updates
+
+#-------------------------------
+# Team Settings
+team__settings:
+  team__title: The Team
+  team__description: We're computer scientists, engineers, biologists, and policy wonks. We believe that science & technology need to be paired with a healthy appreciation for policy & security.<br><br>We specialize in building computational tools to explore the world and building methods to do so responsibly.
+
+#-------------------------------
+# Projects Settings
+projects__settings:
+  projects__title: What we're working on
+  projects__description: We're focused on tackling questions in Artificial Intelligence, Biotechnology, Life Sciences, and National Security.
+
+#-------------------------------
+# Research Settings
+research__settings:
+  research__title: Research
+  research__description: 
+  
+#-------------------------------
+# Testimonials Section
+testimonial__title: Affiliations
+testimonial__description:
+
+testimonial__items:
+  - name: "Information Sciences Institute"
+    image: "/images/logos/isi.jpg"
+    designation: "Principal Scientist"
+    link: "https://www.isi.edu/"
+    content : "AI, Biotech, Security"
+
+  - name: "Viterbi School of Engineering"
+    image: "/images/logos/viterbi.jpg"
+    designation: "Principal Investigator"
+    link: "https://viterbischool.usc.edu/"
+    content : "Research, Build, Scale"
+
+  - name: "University of Southern California"
+    image: "/images/logos/usc.jpg"
+    designation: "Research Lead"
+    link: "https://usc.edu/"
+    content : "Scientist, Engineers, Policy Wonks"
+
+#-------------------------------
+# Blog Section
+blog__settings:
+  blog__title: What we're thinking about
+  blog__description: We're passionate about sharing our work with the world, as well as our thoughts and commentary on current events in science, technology, and policy. 
+
+
+#-------------------------------
+# Gallery Footer Settings
+gallery:
+  gallery__images:
+    - alt: 'Biotechnology'
+      url: '/images/biology/dna.jpg'
+    - alt: 'Ideas'
+      url: '/images/general/lightbulb.jpg'
+    - alt: 'Artificial Intelligence'
+      url: '/images/ai/ai.jpg'
+    - alt: 'National Security'
+      url: '/images/natsec/carrier.jpg'
+
+
+#-------------------------------
+# Footer Navigation Settings
+footer_menu__settings:
+  menu__items:
+    - title: 'Home'
+      url: '/'
+    - title: 'Team'
+      url: '/team/'  
+    - title: 'Projects'
+      url: '/projects/'
+    - title: 'Publications'
+      url: 'https://scholar.google.com/citations?user=e4hx110AAAAJ&hl=en'
+    - title: 'Blog'
+      url: '/blog/'
+    - title: 'Work with us'
+      url: '/contact/'    
+    # - title: 'About'
+    #  url: '/about/'
+
+
+#-------------------------------
+# Contact Settings
+contact:
+  email: xwkdynyn # Add your form_id
+  description: If you'd like to chat, shoot Titus a note through the contact form below, or find him on <a href="https://www.linkedin.com/in/alexandertitus/" target="_blank">LinkedIn</a>.
+
+
+#-------------------------------
+# Comment Section (Disqus)
+disqus-identifier: alexandertitus-1 # Add your shortname for Disqus Comment. For example anvodstudio-demo
+
+
+#-------------------------------
+# Google Analytics
+google-analytics: G-H9KZGK8JZY
