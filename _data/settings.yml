@@ -2,7 +2,7 @@
 # Site Settings
 title: Titus Research Group
 logo: # '/images/titus/backcountry.jpg' # You can add own logo. For example '/images/logo.png'.
-description: The Titus Research Group @ USC specializes in research and development at the intersection of artificial intelligence, biotechnology, and security.
+description: The Titus Research Group specializes in research and development at the intersection of artificial intelligence, biotechnology, and security.
 color_scheme: auto # You can choose three modes auto, light, and dark. By default, the auto mode is set, which means the user can choose the light or dark mode themself.
 
 
@@ -47,7 +47,7 @@ social:
 #-------------------------------
 # Hero Settings
 hero:
-  hero__title: We're the Titus Research Group @ USC.
+  hero__title: We're the Titus Research Group.
   hero__description: We're computer scientists, engineers, biologists, and policy wonks. We believe that science & technology need to be paired with a healthy appreciation for policy & security.<br><br>We specialize in building computational tools to explore the world and building methods to do so responsibly.
   hero__image: '/images/titus/backcountry.jpg'
 
@@ -79,32 +79,32 @@ research__settings:
   
 #-------------------------------
 # Testimonials Section
-testimonial__title: Affiliations
+testimonial__title: Where we're doing our work
 testimonial__description:
 
 testimonial__items:
   - name: "Information Sciences Institute"
     image: "/images/logos/isi.jpg"
-    designation: "Principal Scientist"
-    link: "https://www.isi.edu/"
+    #designation: "Principal Scientist"
+    link: "https://www.isi.edu/directory/titus/"
     content : "AI, Biotech, Security"
 
-  - name: "Viterbi School of Engineering"
-    image: "/images/logos/viterbi.jpg"
-    designation: "Principal Investigator"
-    link: "https://viterbischool.usc.edu/"
-    content : "Research, Build, Scale"
+  - name: "Iovine and Young Academy"
+    image: "/images/logos/iya.jpg"
+    #designation: "Principal Investigator"
+    link: "https://iovine-young.usc.edu/the-pulse/transformative-ai-alexander-titus"
+    content : "Transformative AI in Society"
 
   - name: "University of Southern California"
     image: "/images/logos/usc.jpg"
-    designation: "Research Lead"
-    link: "https://usc.edu/"
+    #designation: "Research Lead"
+    link: "https://research.usc.edu/news/2024/03/iya-student-driven-innovations-in-ai-and-society-pilot-program-to-launch-in-2024/"
     content : "Scientist, Engineers, Policy Wonks"
 
 #-------------------------------
 # Blog Section
 blog__settings:
-  blog__title: What we're thinking about
+  blog__title: What we're thinking and talking about
   blog__description: We're passionate about sharing our work with the world, as well as our thoughts and commentary on current events in science, technology, and policy. 
 
 

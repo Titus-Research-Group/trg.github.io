@@ -5,6 +5,7 @@ description: Advising the U.S. Government on policy at the intersection of biote
 date:   2022-03-17 08:01:35 +0300
 image:  '/images/natsec/carrier.jpg'
 tags:   [biotechnology, policy]
+author: Alexander Titus
 ---
 
 # Project

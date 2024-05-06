@@ -1,0 +1,16 @@
+I"0<p>I’m Titus.</p>
+
+<div class="gallery-box">
+  <div class="gallery">
+    <img src="/images/titus/ai.jpg" loading="lazy" />
+    <img src="/images/titus/biotech.jpg" loading="lazy" />
+    <img src="/images/titus/backcountry.jpg" loading="lazy" />
+  </div>
+  <em>Photos from <a href="https://unsplash.com/" target="_blank">Unsplash</a></em>
+</div>
+
+<blockquote>
+  <p>Life’s about AI, biotech, and backcountry.
+I’ve had the privilege of working with some amazing people at some great institutions across industry, government, and academia.</p>
+</blockquote>
+:ET

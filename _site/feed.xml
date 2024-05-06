@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title></title>
+        <description></description>
+        <link>http://localhost:4000/</link>
+        <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Mon, 06 May 2024 12:36:43 -0400</pubDate>
+        <lastBuildDate>Mon, 06 May 2024 12:36:43 -0400</lastBuildDate>
+        <generator>Jekyll v4.2.1</generator>
+        
+            <item>
+                <title>Automating The Web - Browser Agents for Web Automation</title>
+                <description>&lt;p&gt;The World Wide Web has long been a hub of online activity. From commerce to social networking, entertainment to education, the web touches nearly every aspect of modern life. As the web has grown in scale and complexity over the decades, so has the need for tools and techniques to automate interactions with web services.&lt;/p&gt;
+
+&lt;p&gt;Robotic Process Automation (RPA) is revolutionizing the way businesses operate by employing software robots or AI-powered digital workers to automate repetitive, rule-based tasks. By mimicking human actions and interacting with IT systems, RPA tools can efficiently perform a wide range of activities, such as data entry, invoice processing, and customer onboarding. The technology’s importance lies in its ability to streamline operations, reduce costs, improve productivity, and allow human workers to focus on higher-value tasks requiring creativity and decision-making skills. As organizations recognize the benefits of RPA in driving digital transformation, the demand for this technology is growing significantly.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/general/browser-agents1.png&quot; alt=&quot;Statistics Chart&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The North American RPA market is projected to grow from $590.8M in 2020 to $703.4M by 2030, with a CAGR of 37.6% between 2022 and 2030, according to Grand View Research. This strong growth forecast highlights the increasing adoption of RPA across industries as businesses seek to optimize processes and reduce operational costs. Advancements in AI and machine learning will further enhance RPA capabilities, enabling the automation of more complex tasks. However, successful RPA implementation requires careful planning and change management to ensure seamless integration and collaboration between human workers and software robots.&lt;/p&gt;
+
+&lt;p&gt;As generative AI enables intelligent systems to extend software capabilities from simple classification to generative content, intelligent decision-making, and action-taking, new paradigms of web automation emerge. Browser agents, powered by large language models (LLMs), have the potential to autonomously navigate websites, extract information, fill out forms, and complete complex multi-step tasks while adapting to the dynamic nature of the modern web. These AI-driven agents have unprecedented potential to automate manual online processes, enhance accessibility, and unlock new possibilities for interacting with the vast resources of the web at scale.&lt;/p&gt;
+
+&lt;p&gt;For the past 5 months, I worked on designing better ways of automating the web: a general-purpose browser agent and a high-performance web-scraping browser agent.&lt;/p&gt;
+
+&lt;p&gt;First, I worked on creating a general-purpose browser agent that responds to natural language and executes tasks through a headless browser instance. It does this through a step-by-step decision-making and action-taking architecture, utilizing multi-modal context analysis to ideate, scope, and execute incremental browser actions. It’s capable of traversing the web, selecting web elements to interact with, executing incremental actions in favor of completing the overall task, and repeating this loop until the task has been adequately completed.&lt;/p&gt;
+
+&lt;p&gt;This system primarily uses GPT-4 Turbo and GPT-4 Vision for multi-modal context capabilities, and is modeled after the following architecture:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/general/browser-agents1.png&quot; alt=&quot;Browser Agent Flowchart&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The architecture enables the browser agent to incrementally analyze the current web page, decide on the optimal next action, execute it, and repeat this perceive-think-act loop until the task is complete.&lt;/p&gt;
+
+&lt;p&gt;The agent first processes the user’s natural language task description. It then enters a loop of perceiving the current page state via the browser Document Object Model (DOM) and a screenshot, using an LLM to analyze the multi-modal context and determine the next best action to progress the task, executing that action through the browser, and iterating until done. &lt;/p&gt;
+
+&lt;p&gt;After making significant progress on this implementation, a few clear problems arose: (a) most valuable information and actions are auth-enabled, which requires effective cookie and proxy management and (b) this architecture was effective, but slow and expensive. Ultimately, the goal was to build an effective, commercially-viable tool to help automate the web, and that requires good use cases, performance, and unit economics.&lt;/p&gt;
+
+&lt;p&gt;That led to building a high-performance browser agent, tailored for holistic web-scraping and research. Though existing platforms such as &lt;a href=&quot;https://perplexity.ai&quot;&gt;Perplexity&lt;/a&gt; and &lt;a href=&quot;https://exa.ai&quot;&gt;Exa&lt;/a&gt; are high-quality ways of intelligently traversing the web, they do not address the use case of holistic web research. Perplexity primarily acts as a consumer search engine, requiring that it acts as a low-latency answering machine for the average search query. Exa is a fantastic developer tool to retrieve web results through neural search queries, but it’s modular for developer use cases rather than for research. Similar to &lt;a href=&quot;https://arc.net&quot;&gt;Arc Search&lt;/a&gt;’s “Browse For Me” feature, I wanted to create a web research tool that generated extremely holistic, long-form answers that compiled relevant search engine answers from various sources progressively and quickly. This could be used to help consumers understand current events and politics from multiple sources, politicians to conduct holistic campaign research, business owners to assist with competitive research, and anything else that requires traversing through multiple search results on the web.&lt;/p&gt;
+
+&lt;p&gt;This new browser agent is architected as follows: first, a user submits a search query which triggers results retrieval from multiple sources: Google and Exa. A headless browser instance is created to render the first page of search results and scrape all relevant links as sources. Recursively, each link is rendered, scraped, and synthesized as content that is progressively added to a data structure holding all of the content pertaining to the user query. Each page is also processed for relevant links based on the user query, and recursively processed and synthesized for natural “rabbit-holes”. This recursive processing is run in parallel and is aborted after a certain limit is reached, all while the synthesized content is being made transparent to the user for a progressive streaming experience. After web retrieval is complete, the processed results will be synthesized once more for the user, providing a clearly articulated answer.&lt;/p&gt;
+
+&lt;p&gt;The first version of this browser research agent has been built and optimized, awaiting testing from first users.&lt;/p&gt;
+
+&lt;p&gt;In conclusion, automating the web is becoming increasingly crucial in our digital world. As the web continues to expand in scale and complexity, manual interaction grows more inefficient and time-consuming. AI-powered browser agents have the potential to revolutionize how we engage with and extract value from the immense resources available online. From automating repetitive tasks to enabling comprehensive research, these intelligent agents can empower users in numerous ways. By leveraging advanced language models and adaptive architectures, browser agents can navigate the web with human-like understanding and flexibility.&lt;/p&gt;
+
+&lt;p&gt;If you’re interested in trying out the early developments of these browser agents, please reach out to me at &lt;a href=&quot;https://calix.dev&quot;&gt;https://calix.dev&lt;/a&gt; for access!&lt;/p&gt;
+</description>
+                <pubDate>Thu, 02 May 2024 08:01:35 -0400</pubDate>
+                <link>http://localhost:4000/blog/automating-the-web</link>
+                <guid isPermaLink="true">http://localhost:4000/blog/automating-the-web</guid>
+                
+                <category>ai</category>
+                
+                <category>research</category>
+                
+                <category>iya</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>Violet Teaming AI in the Life Sciences</title>
+                <description>&lt;h1 id=&quot;abstract&quot;&gt;Abstract&lt;/h1&gt;
+&lt;p&gt;As modern life science research shifts from an observational field of science to a field of engineering biology, 
+computational techniques are more relevant to every aspect of the field. Artificial intelligence (AI) is emerging 
+as a massive accelerator of biological engineering for its ability to learn the design paradigms of life (DPoL) 
+and understand the genotype-to-phenotype (G2P) relationships of organisms. The reception has been mixed, however, 
+as opportunities across health, energy, environment, agriculture, and industrial materials are confronted with 
+emerging biosecurity risks across novel pathogens of concern and operational knowledge of biological engineering. 
+There is an urgent need for research to be conducted at the intersection of AI security and biosecurity and the 
+establishment of a violet teaming paradigm where research focused on risk is paired with those focused on the 
+opportunity to minimize the downside and maximize the upside provided by AI in the life sciences.&lt;/p&gt;
+
+&lt;p&gt;[Link to &lt;a href=&quot;https://doi.org/10.5281/zenodo.8180395&quot;&gt;Violet Teaming AI in the Life Sciences&lt;/a&gt; preprint]&lt;/p&gt;
+</description>
+                <pubDate>Mon, 24 Jul 2023 08:01:35 -0400</pubDate>
+                <link>http://localhost:4000/blog/violet-teaming-ai-life-sciences</link>
+                <guid isPermaLink="true">http://localhost:4000/blog/violet-teaming-ai-life-sciences</guid>
+                
+                <category>ai</category>
+                
+                <category>security</category>
+                
+                <category>research</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>National Security Commission on Emerging Biotechnology</title>
+                <description>&lt;h1 id=&quot;project&quot;&gt;Project&lt;/h1&gt;
+&lt;p&gt;I serve as a commissioner on the &lt;a href=&quot;https://www.armed-services.senate.gov/press-releases/armed-services-committees-leadership-announces-selections-for-national-security-commission-on-emerging-biotechnology&quot; target=&quot;_blank&quot;&gt;National Security Commission on Emerging Biotechnology&lt;/a&gt; (NSCEB) along with colleagues from across industry and U.S. Congress.&lt;/p&gt;
+
+&lt;h1 id=&quot;overview-from-the-nsceb-announcement&quot;&gt;Overview from the NSCEB (&lt;a href=&quot;https://www.armed-services.senate.gov/press-releases/armed-services-committees-leadership-announces-selections-for-national-security-commission-on-emerging-biotechnology&quot; target=&quot;_blank&quot;&gt;announcement&lt;/a&gt;)&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;The bipartisan leadership of the House and Senate Armed Services Committees, Representatives Adam Smith (D-Wash.) and Mike Rogers (R-Ala.), Chairman and Ranking Member of the House Armed Services Committee (HASC), and Senators Jack Reed (D-R.I.) and Jim Inhofe (R-Okla.), Chairman and Ranking Member of the Senate Armed Services Committee (SASC), announced appointments to the National Security Commission on Emerging Biotechnology, which was established by &lt;a href=&quot;https://www.congress.gov/bill/117th-congress/senate-bill/1605/text&quot; target=&quot;_blank&quot;&gt;Sec. 1091 of the National Defense Authorization Act (NDAA) for Fiscal Year 2022 (FY22)&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The National Security Commission on Emerging Biotechnology will conduct a thorough review of how advances in emerging biotechnology and related technologies will shape current and future activities of the Department of Defense, provide an interim report to the President of the United States and the Armed Services Committees within one year, and submit a final unclassified report within two years to the President and the committees, including recommendations for action by Congress and the federal government.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Twelve appointed members will make up the Commission, including two members appointed by the HASC Chairman, one Member of the House and one not; two members appointed by the HASC Ranking Member, one Member of the House and one not; two members appointed by the SASC Chairman, one Member of the Senate and one not; two members appointed by the SASC Ranking Member, one Member of the Senate and one not; and one member each appointed by the Speaker of the House, House Minority Leader, Senate Majority Leader, and Senate Minority Leader, respectively.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The leaders of the Armed Services Committees named the following appointees:&lt;/p&gt;
+
+&lt;h1 id=&quot;chairman-reed-selected&quot;&gt;Chairman Reed selected:&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Senator Alex Padilla is the first Latino to represent California in the U.S. Senate. He was appointed in January 2021 to complete the Senate term of Vice President Kamala Harris. The son of immigrants, Padilla grew up in the San Fernando Valley and studied Mechanical Engineering at the Massachusetts Institute of Technology. He was drawn to politics in response to California’s anti-immigrant Proposition 187. Padilla was elected to the Los Angeles City Council in 1999 and the State Senate in 2006. As California’s Secretary of State, he oversaw a historic expansion of voting rights and voter participation. Padilla serves as Chairman of the Senate Judiciary Subcommittee on Immigration, Citizenship, and Border Safety. He is a member of the Senate Committees on Budget; Environment and Public Works; Homeland Security and Governmental Affairs; Judiciary; and Rules. Padilla lives in the San Fernando Valley with his wife, Angela, and their three sons, Roman, Alex and Diego.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;The Honorable Dov S. Zakheim is Senior Advisor at the Center for Strategic and International Studies and Senior Fellow at the CNA Corporation. Previously he was Senior Vice President of Booz Allen Hamilton where he led the firm’s support of U.S. Combatant Commanders worldwide. From 2001 to April 2004 he was Under Secretary of Defense (Comptroller) and Chief Financial Officer for the Department of Defense. From 2002-2004 Dr. Zakheim was DOD’s coordinator of civilian programs in Afghanistan. From 1987 to 2001 he was both corporate vice president of System Planning Corporation and chief executive officer of its international subsidiary. From 1985 until 1987 Dr. Zakheim was Deputy Under Secretary of Defense for Planning and Resources. Dr. Zakheim currently serves on numerous government, corporate, non-profit and charitable boards and lectures and provides media commentary on national security issues domestically and internationally. He is a 1970 graduate of Columbia University with a B.A., summa cum laude; studied at the London School of Economics; holds a doctorate in economics and politics at St. Antony’s College, University of Oxford; and has been an adjunct professor at several universities including the National War College, Columbia University and Yeshiva University.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;chairman-smith-selected&quot;&gt;Chairman Smith selected:&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;Congressman Ro Khanna represents California’s 17th Congressional District, located in the heart of Silicon Valley, and is serving in his third term. Rep. Khanna sits on the House Armed Services, Agriculture and Oversight and Reform committees, where he chairs the Environmental Subcommittee. Additionally, Rep. Khanna is the Deputy Whip of the Congressional Progressive Caucus, serves as an Assistant Whip for the Democratic Caucus, and is the Democratic Vice Chair of the House Caucus on India and Indian Americans. Rep. Khanna is committed to representing the people and ideas rooted in Silicon Valley to the nation and throughout the world.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Paul Arcangeli will be retiring from the House Armed Services committee on April 1st after 18 years with the committee, most recently serving as staff director. He has served in a variety of roles with the committee since 2004, including as deputy staff director, minority staff director, and staff lead for the Subcommittee on Readiness. Prior to joining the Committee, he served as the Director of the Department of Defense’s Humanitarian Demining Training Center at Ft. Leonard Wood, Missouri. Previously, he served as executive vice president for a company conducting innovative research in fuel, emissions, and environmental technologies. In 1999, he retired from the U.S. Army after serving as an explosive ordnance officer, as a maintenance officer, and as the Chief of the Information Technology Projects Division at the United States Military Academy, West Point. He holds a Master of Science in information technology from the Naval Post Graduate School and a Bachelor of Science in biology from the University of North Georgia.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;ranking-member-inhofe-selected&quot;&gt;Ranking Member Inhofe selected:&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;U.S. Senator Todd Young is the senior United States Senator from Indiana, a seat to which he was first elected in 2016 after serving three terms representing the Ninth Congressional District of Indiana in the U.S. House of Representatives. Through Sen. Young’s work on the Endless Frontier Act, his service on the Foreign Relations Committee, the Commerce Committee, and in his military service, he has lived at the intersection of emerging technology and geopolitical challenges for years. As a Marine, fresh out of from the Naval Academy, he served in one of the first units utilizing unmanned aerial vehicles — revolutionary technology at that time that has become relatively commonplace today.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Dr. Alexander Titus is a Product Strategy &amp;amp; Operations Lead at Google Research where he focuses on driving alignment between research priorities and Google’s product priorities. Before Google, Dr. Titus was the first Assistant Director for Biotechnology within the Office of the Under Secretary of Defense for Research &amp;amp; Engineering, where he was the technical and oversight lead for all relevant research and engineering matters across the biotechnology portfolio. Dr. Titus holds a Ph.D. in Quantitative Biomedical Sciences from the Guarini School of Graduate &amp;amp; Advanced Studies at Dartmouth College, where his work focused on cancer biology and artificial intelligence/machine learning applications in biology. He also holds a dual BS/BA in biochemistry and biology from the University of Puget Sound.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;ranking-member-rogers-selected&quot;&gt;Ranking Member Rogers selected:&lt;/h1&gt;
+
+&lt;p&gt;&lt;em&gt;U.S. Representative Stephanie Bice represents the Fifth Congressional District of Oklahoma. Prior to her election to Congress, Bice served in the Oklahoma State Senate for six years. Before her public service, Bice worked in the private sector for eight years in financial oversight, business strategy and marketing for her family’s technology company. In addition, she ran her own marketing company, and later helped lead a boutique digital marketing agency as vice president of business development. Rep. Bice is President of the Freshman Class and serves on the Cybersecurity and Military Personnel Subcommittees on the House Armed Services Committee.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Jason Kelly, Ph.D. is the co-founder and CEO of Ginkgo Bioworks. Ginkgo is a synthetic biology company headquartered in Boston, MA that programs cells for customers in the chemical, pharmaceutical, food and energy industries. Prior to Ginkgo, Jason received B.S. degrees in Chemical Engineering and Biology and a PhD in Biological Engineering all from MIT.&lt;/em&gt;&lt;/p&gt;
+</description>
+                <pubDate>Thu, 17 Mar 2022 01:01:35 -0400</pubDate>
+                <link>http://localhost:4000/blog/national-security-commission-biotech-nsceb</link>
+                <guid isPermaLink="true">http://localhost:4000/blog/national-security-commission-biotech-nsceb</guid>
+                
+                <category>biotechnology</category>
+                
+                <category>policy</category>
+                
+                
+            </item>
+        
+            <item>
+                <title>PhD not required</title>
+                <description>&lt;p&gt;There’s nothing inherently impressive about spending 60–100 hours/week working for over half a decade for almost no pay. In fact, if you think about it out of context, it’s outright crazy to do that — but that’s usually what it takes to get a PhD. Now, those of us who already have a grad degree would like to think that it was the only way to end up where we are in our careers, and the businesses of the bioeconomy are better off with more advanced degrees, but the reality is that unless you want a very specific set of jobs, a PhD is not required. In fact, in many cases, a PhD works against you because there’s a stereotype that we come with big egos. I’m not going to lie, it’s pretty true.&lt;/p&gt;
+
+&lt;p&gt;But if we’re going to build new industries and change the world with our technologies, we need all the help we can get. The false notion that you need a PhD to succeed in the biotech industry needs to change, because we need all the help we can get if we’re going to take advantage of the decade of the bioeconomy.&lt;/p&gt;
+
+&lt;h1 id=&quot;when-i-graduated-from-college-it-was-one-of-the-best-days-of-my-life&quot;&gt;When I graduated from college, it was one of the best days of my life&lt;/h1&gt;
+&lt;p&gt;I was free in the world and ready for a job. I picked up everything I owned and moved to Silicon Valley, the land of startups, and college dropouts. But to my surprise, I struggled to find a job. I had two bachelor’s degrees, but they were from a small liberal arts school from Washington State — a “no-name” school. I didn’t go to Stanford, or Berkeley, or Harvard.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/education/books.jpeg&quot; loading=&quot;lazy&quot; alt=&quot;Car&quot; /&gt;
+  &lt;/div&gt;
+  &lt;em&gt;Photo by &lt;a href=&quot;https://unsplash.com/@sharonmccutcheon&quot; target=&quot;_blank&quot;&gt;Sharon McCutcheon&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/&quot; target=&quot;_blank&quot;&gt;Unsplash&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Eventually, I landed a job at a startup working on the recruiting team. Almost all of my colleagues did go to MIT, Stanford, or an Ivy League school, and we did use where people went to college as a filter to sift through candidates.&lt;/p&gt;
+
+&lt;p&gt;Fast forward to today, and I worked my butt off and earned a PhD from Dartmouth, and now I’m a member of the biotechnology industry. Again, I’m in an industry full of promise to change the world and revolutionize everything from healthcare to manufacturing. But I’m having deja vu, only this time my industry doesn’t use the Ivy League as a filter, but whether or not you have a PhD to determine if you’ll find your place in our industry.&lt;/p&gt;
+
+&lt;h1 id=&quot;im-asked-nearly-every-day-by-undergrads-and-new-grads-what-they-should-study-in-their-phd&quot;&gt;I’m asked nearly every day by undergrads and new grads what they should study in their PhD&lt;/h1&gt;
+&lt;p&gt;Almost none of them want to get a PhD, but they’re told over and over again that they have to get a PhD to be successful in our industry. I sit in meeting after meeting where we talk about the future of the bioeconomy, and the education initiatives almost exclusively focus on supporting grad students and postdocs.&lt;/p&gt;
+
+&lt;h1 id=&quot;if-we-want-to-build-a-thriving-and-inclusive-industry-we-need-to-change-how-we-look-at-education&quot;&gt;If we want to build a thriving and inclusive industry, we need to change how we look at education&lt;/h1&gt;
+&lt;p&gt;I’ve spent countless hours around graduates from Stanford Medical School, or Harvard Business School, but even more time around graduates of Howard University, San Jose State University, the University of Puget Sound, and many other wonderful schools from around the country.&lt;/p&gt;
+
+&lt;div class=&quot;gallery-box&quot;&gt;
+  &lt;div class=&quot;gallery&quot;&gt;
+    &lt;img src=&quot;/images/education/auditorium.jpeg&quot; loading=&quot;lazy&quot; alt=&quot;Car&quot; /&gt;
+  &lt;/div&gt;
+  &lt;em&gt;Photo by &lt;a href=&quot;https://unsplash.com/@nate_dumlao&quot; target=&quot;_blank&quot;&gt;Nathan Dumlao&lt;/a&gt; on &lt;a href=&quot;https://unsplash.com/&quot; target=&quot;_blank&quot;&gt;Unsplash&lt;/a&gt;&lt;/em&gt;
+&lt;/div&gt;
+
+&lt;h1 id=&quot;do-you-know-what-ive-found&quot;&gt;Do you know what I’ve found?&lt;/h1&gt;
+&lt;p&gt;Aside from a chip on some people’s shoulders — I couldn’t tell you where someone went to school any better than where they prefer to shop for groceries. That’s because where someone goes to school is only one indicator of their abilities. It neglects, however, the most important indicators of career success. The ability to persevere, hustle, and critically think about a problem. In an industry full of startups, those are the best talents for business.&lt;/p&gt;
+
+&lt;h1 id=&quot;do-you-know-what-does-demonstrate-those-skills&quot;&gt;Do you know what does demonstrate those skills?&lt;/h1&gt;
+&lt;p&gt;Working full-time while putting yourself through school, or taking care of children while taking classes, or being a first-generation college graduate, and thousands of other variations on the theme. As an industry that’s proud to break ground in entirely new fields of technology, we need to pride ourselves on valuing those very skills in people when we’re hiring. Rather than building systems that reward starting from a higher vantage point, we need to reward breaking trail and forging paths that were not previously available to people.&lt;/p&gt;
+
+&lt;h1 id=&quot;i-challenge-us-as-a-community-to-decide-to-change-the-norm&quot;&gt;I challenge us as a community to decide to change the norm&lt;/h1&gt;
+&lt;p&gt;We’re early in our lifecycle as an industry and it’s not too late to build an inclusive industry based on merit rather than pedigree. Since we all spend our days talking about the promise of our industry to change the world, we need all the help we can get. We all benefit from a diversity of life experience, education, and training. A PhD program teaches you how to be a scientist, but we need engineers, storytellers, artists, and people to challenge our assumptions. We need people from all walks of life and socioeconomic backgrounds, and we get that by judging people on their qualities rather than just their education.&lt;/p&gt;
+
+&lt;h1 id=&quot;lets-do-this&quot;&gt;Let’s do this&lt;/h1&gt;
+&lt;p&gt;So instead of keeping gating functions, let’s rally around creating the most inclusive industry in the world, where people flock from as far and wide as the finance, manufacturing, healthcare, energy, and agriculture industries. But to do this, we need to get real about what our diplomas really say. They say we had the privilege to go to college or grad school and learn in a safe environment. They say we were provided a foundation to stand upon as we went out into the world. What they don’t say is that they represent who we are and what we’re capable of. That’s what we say. And no matter who we are, at the end of the day we all end up in the same place, getting ready for bed and ready to start a new day.&lt;/p&gt;
+</description>
+                <pubDate>Fri, 12 Jun 2020 08:01:35 -0400</pubDate>
+                <link>http://localhost:4000/blog/phd-not-required</link>
+                <guid isPermaLink="true">http://localhost:4000/blog/phd-not-required</guid>
+                
+                <category>education</category>
+                
+                <category>graduate</category>
+                
+                
+            </item>
+        
+    </channel>
+</rss>

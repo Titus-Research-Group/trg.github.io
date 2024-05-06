@@ -6,22 +6,22 @@ layout: default
   <div class="row">
     <div class="col col-12">
       <div class="author-info">
-        <img src="{{ page.avatar }}" alt="{{ page.name }}" class="author__avatar">
-        <h1 class="author__name">{{ page.name }}</h1>
-        <p class="author__bio">{{ page.bio }}</p>
+        <h1 class="author-name">{{ page.name }}</h1>
+        {% if page.image %}
+          <img src="{{ page.image | prepend: site.baseurl }}" alt="{{ page.name }}" class="author-image">
+        {% endif %}
+        <p class="author-bio">{{ page.bio }}</p>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container">
   <div class="row">
     <div class="col col-12">
-      <h2>Posts by {{ page.name }}</h2>
-      <ul class="post-list">
+      <h2 class="author-posts-title">Posts by {{ page.name }}</h2>
+      <ul class="author-posts-list">
         {% assign filtered_posts = site.posts | where: 'author', page.name %}
         {% for post in filtered_posts %}
-          <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+          <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
         {% endfor %}
       </ul>
     </div>

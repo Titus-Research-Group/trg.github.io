@@ -4,8 +4,8 @@ title:  Automating The Web - Browser Agents for Web Automation
 description: Creating browser agents for robotic process automation (RPA) and performant web research. 
 date:   2024-05-02 15:01:35 +0300
 image:  '/images/general/browser-agents.jpg'
-tags:   [ai, research]
-author: calix
+tags:   [ai, research, iya]
+author: Calix Huang
 ---
 
 The World Wide Web has long been a hub of online activity. From commerce to social networking, entertainment to education, the web touches nearly every aspect of modern life. As the web has grown in scale and complexity over the decades, so has the need for tools and techniques to automate interactions with web services.

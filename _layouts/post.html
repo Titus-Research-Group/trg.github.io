@@ -24,7 +24,7 @@ layout: default
             {% if author %}
               <a href="{{ site.baseurl }}/authors/{{ author.name }}" class="post-author-link">{{ author.name }}</a>
             {% else %}
-              <a href="{{site.baseurl}}/about/" class="post-author-link">{{site.data.settings.author.author__name}}</a>
+              <span class="post-author-link">{{ page.author }}</span>
             {% endif %}
             – <time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
           </div>

@@ -5,6 +5,7 @@ description: Red teaming probes vulnerabilities and blue teaming creates defense
 date:   2023-07-24 15:01:35 +0300
 image:  '/images/general/lightbulb.jpg'
 tags:   [ai, security, research]
+author: Alexander Titus
 ---
 
 # Abstract
